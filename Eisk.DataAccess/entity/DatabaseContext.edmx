@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EmployeeDB_Model_NS.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="EmployeeDB_Model_NSStoreContainer">
+          <EntitySet Name="Employees" EntityType="EmployeeDB_Model_NS.Store.Employees" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Employees_Employees" Association="EmployeeDB_Model_NS.Store.FK_Employees_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Employees1" EntitySet="Employees" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="Title" Type="nvarchar" MaxLength="30" />
+          <Property Name="TitleOfCourtesy" Type="nvarchar" MaxLength="25" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="HireDate" Type="datetime" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="60" />
+          <Property Name="City" Type="nvarchar" MaxLength="15" />
+          <Property Name="Region" Type="nvarchar" MaxLength="15" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="Country" Type="nvarchar" Nullable="false" MaxLength="15" />
+          <Property Name="HomePhone" Type="nvarchar" Nullable="false" MaxLength="24" />
+          <Property Name="Extension" Type="nvarchar" MaxLength="4" />
+          <Property Name="Photo" Type="image" />
+          <Property Name="Notes" Type="ntext" />
+          <Property Name="ReportsTo" Type="int" />
+          <Property Name="PhotoPath" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK_Employees_Employees">
+          <End Role="Employees" Type="EmployeeDB_Model_NS.Store.Employees" Multiplicity="0..1" />
+          <End Role="Employees1" Type="EmployeeDB_Model_NS.Store.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="Employees1">
+              <PropertyRef Name="ReportsTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Custom_Employees_GetAllEmployeesWithSupervisors" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Custom_Employees_GetAllTopAndGeneralEmployees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Custom_Employees_GetEmployeesByFilterParams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="lastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="firstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="city" Type="nvarchar" Mode="In" />
+          <Parameter Name="region" Type="nvarchar" Mode="In" />
+          <Parameter Name="country" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Employees_CreateNewEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Title" Type="nvarchar" Mode="In" />
+          <Parameter Name="TitleOfCourtesy" Type="nvarchar" Mode="In" />
+          <Parameter Name="BirthDate" Type="datetime" Mode="In" />
+          <Parameter Name="HireDate" Type="datetime" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="City" Type="nvarchar" Mode="In" />
+          <Parameter Name="Region" Type="nvarchar" Mode="In" />
+          <Parameter Name="PostalCode" Type="nvarchar" Mode="In" />
+          <Parameter Name="Country" Type="nvarchar" Mode="In" />
+          <Parameter Name="HomePhone" Type="nvarchar" Mode="In" />
+          <Parameter Name="Extension" Type="nvarchar" Mode="In" />
+          <Parameter Name="Photo" Type="image" Mode="In" />
+          <Parameter Name="Notes" Type="nvarchar" Mode="In" />
+          <Parameter Name="ReportsTo" Type="int" Mode="In" />
+          <Parameter Name="PhotoPath" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Employees_DeleteEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmployeeID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Employees_DeleteEmployees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="employeeIds" Type="xml" Mode="In" />
+        </Function>
+        <Function Name="Employees_GetAllEmployees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Employees_GetAllEmployees_Paged" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="orderby" Type="varchar" Mode="In" />
+          <Parameter Name="startrow" Type="int" Mode="In" />
+          <Parameter Name="pagesize" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Employees_GetAllEmployees_Paged_Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Employees_GetEmployeeByEmployeeId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmployeeId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Employees_UpdateEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmployeeID" Type="int" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Title" Type="nvarchar" Mode="In" />
+          <Parameter Name="TitleOfCourtesy" Type="nvarchar" Mode="In" />
+          <Parameter Name="BirthDate" Type="datetime" Mode="In" />
+          <Parameter Name="HireDate" Type="datetime" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="City" Type="nvarchar" Mode="In" />
+          <Parameter Name="Region" Type="nvarchar" Mode="In" />
+          <Parameter Name="PostalCode" Type="nvarchar" Mode="In" />
+          <Parameter Name="Country" Type="nvarchar" Mode="In" />
+          <Parameter Name="HomePhone" Type="nvarchar" Mode="In" />
+          <Parameter Name="Extension" Type="nvarchar" Mode="In" />
+          <Parameter Name="Photo" Type="image" Mode="In" />
+          <Parameter Name="Notes" Type="nvarchar" Mode="In" />
+          <Parameter Name="ReportsTo" Type="int" Mode="In" />
+          <Parameter Name="PhotoPath" Type="nvarchar" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EmployeeDB_Model_NS" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="EmployeeDB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employees" EntityType="EmployeeDB_Model_NS.Employee" />
+          <AssociationSet Name="FK_Employees_Employees" Association="EmployeeDB_Model_NS.FK_Employees_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Employees1" EntitySet="Employees" />
+          </AssociationSet>
+          <FunctionImport Name="Employees_GetAllEmployees" EntitySet="Employees" ReturnType="Collection(EmployeeDB_Model_NS.Employee)" />
+          <FunctionImport Name="Employees_GetEmployeesByReportsTo_Paged_Count" ReturnType="Collection(Int32)">
+            <Parameter Name="reportsTo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Employees_GetEmployeesByReportsTo_Paged" EntitySet="Employees" ReturnType="Collection(EmployeeDB_Model_NS.Employee)">
+            <Parameter Name="reportsTo" Mode="In" Type="Int32" />
+            <Parameter Name="orderby" Mode="In" Type="String" />
+            <Parameter Name="startrow" Mode="In" Type="Int32" />
+            <Parameter Name="pagesize" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Employees_GetEmployeesByReportsTo" EntitySet="Employees" ReturnType="Collection(EmployeeDB_Model_NS.Employee)">
+            <Parameter Name="reportsTo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Employees_GetEmployeeByEmployeeId" EntitySet="Employees" ReturnType="Collection(EmployeeDB_Model_NS.Employee)">
+          <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Employees_GetAllEmployees_Paged_Count" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="Employees_GetAllEmployees_Paged" EntitySet="Employees" ReturnType="Collection(EmployeeDB_Model_NS.Employee)">
+            <Parameter Name="orderby" Mode="In" Type="String" />
+            <Parameter Name="startrow" Mode="In" Type="Int32" />
+            <Parameter Name="pagesize" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Employees_DeleteEmployees" ReturnType="Collection(Int32)">
+          <Parameter Name="employeeIds" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Custom_Employees_GetAllEmployeesWithSupervisors" ReturnType="Collection(EmployeeDB_Model_NS.EmployeeWithSupervisorName)" />
+          <FunctionImport Name="Custom_Employees_GetAllTopAndGeneralEmployees" EntitySet="Employees" ReturnType="Collection(EmployeeDB_Model_NS.Employee)" />
+          <FunctionImport Name="Custom_Employees_GetEmployeesByFilterParams" EntitySet="Employees" ReturnType="Collection(EmployeeDB_Model_NS.Employee)">
+            <Parameter Name="lastName" Mode="In" Type="String" />
+            <Parameter Name="firstName" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="region" Mode="In" Type="String" />
+            <Parameter Name="country" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Title" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="TitleOfCourtesy" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="BirthDate" Type="DateTime" />
+          <Property Name="HireDate" Type="DateTime" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="60" Unicode="true" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="Region" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="HomePhone" Type="String" Nullable="false" MaxLength="24" Unicode="true" FixedLength="false" />
+          <Property Name="Extension" Type="String" MaxLength="4" Unicode="true" FixedLength="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Notes" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ReportsTo" Type="Int32" />
+          <Property Name="PhotoPath" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Subordinates" Relationship="EmployeeDB_Model_NS.FK_Employees_Employees" FromRole="Employees" ToRole="Employees1" />
+          <NavigationProperty Name="Supervisor" Relationship="EmployeeDB_Model_NS.FK_Employees_Employees" FromRole="Employees1" ToRole="Employees" />
+        </EntityType>
+        <Association Name="FK_Employees_Employees">
+          <End Role="Employees" Type="EmployeeDB_Model_NS.Employee" Multiplicity="0..1" />
+          <End Role="Employees1" Type="EmployeeDB_Model_NS.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="Employees1">
+              <PropertyRef Name="ReportsTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="EmployeeWithSupervisorName">
+          <Property Type="Int32" Name="EmployeeID" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="SupervisorFirstName" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="SupervisorLastName" Nullable="false" MaxLength="20" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EmployeeDB_Model_NSStoreContainer" CdmEntityContainer="EmployeeDB">
+          <EntitySetMapping Name="Employees"><EntityTypeMapping TypeName="EmployeeDB_Model_NS.Employee"><MappingFragment StoreEntitySet="Employees">
+            <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+            <ScalarProperty Name="LastName" ColumnName="LastName" />
+            <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+            <ScalarProperty Name="TitleOfCourtesy" ColumnName="TitleOfCourtesy" />
+            <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+            <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+            <ScalarProperty Name="Address" ColumnName="Address" />
+            <ScalarProperty Name="City" ColumnName="City" />
+            <ScalarProperty Name="Region" ColumnName="Region" />
+            <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+            <ScalarProperty Name="Country" ColumnName="Country" />
+            <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+            <ScalarProperty Name="Extension" ColumnName="Extension" />
+            <ScalarProperty Name="Photo" ColumnName="Photo" />
+            <ScalarProperty Name="Notes" ColumnName="Notes" />
+            <ScalarProperty Name="ReportsTo" ColumnName="ReportsTo" />
+            <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
+          </MappingFragment></EntityTypeMapping>
+            <EntityTypeMapping TypeName="EmployeeDB_Model_NS.Employee">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="EmployeeDB_Model_NS.Store.Employees_CreateNewEmployee">
+                  <ScalarProperty Name="PhotoPath" ParameterName="PhotoPath" />
+                  <ScalarProperty Name="ReportsTo" ParameterName="ReportsTo" />
+                  <ScalarProperty Name="Notes" ParameterName="Notes" />
+                  <ScalarProperty Name="Photo" ParameterName="Photo" />
+                  <ScalarProperty Name="Extension" ParameterName="Extension" />
+                  <ScalarProperty Name="HomePhone" ParameterName="HomePhone" />
+                  <ScalarProperty Name="Country" ParameterName="Country" />
+                  <ScalarProperty Name="PostalCode" ParameterName="PostalCode" />
+                  <ScalarProperty Name="Region" ParameterName="Region" />
+                  <ScalarProperty Name="City" ParameterName="City" />
+                  <ScalarProperty Name="Address" ParameterName="Address" />
+                  <ScalarProperty Name="HireDate" ParameterName="HireDate" />
+                  <ScalarProperty Name="BirthDate" ParameterName="BirthDate" />
+                  <ScalarProperty Name="TitleOfCourtesy" ParameterName="TitleOfCourtesy" />
+                  <ScalarProperty Name="Title" ParameterName="Title" />
+                  <ScalarProperty Name="FirstName" ParameterName="FirstName" />
+                  <ScalarProperty Name="LastName" ParameterName="LastName" />
+                  <ResultBinding Name="EmployeeId" ColumnName="EmployeeId" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="EmployeeDB_Model_NS.Store.Employees_UpdateEmployee">
+                  <ScalarProperty Name="EmployeeId" ParameterName="EmployeeID" Version="Current" />
+                  <ScalarProperty Name="PhotoPath" ParameterName="PhotoPath" Version="Current" />
+                  <ScalarProperty Name="ReportsTo" ParameterName="ReportsTo" Version="Current" />
+                  <ScalarProperty Name="Notes" ParameterName="Notes" Version="Current" />
+                  <ScalarProperty Name="Photo" ParameterName="Photo" Version="Current" />
+                  <ScalarProperty Name="Extension" ParameterName="Extension" Version="Current" />
+                  <ScalarProperty Name="HomePhone" ParameterName="HomePhone" Version="Current" />
+                  <ScalarProperty Name="Country" ParameterName="Country" Version="Current" />
+                  <ScalarProperty Name="PostalCode" ParameterName="PostalCode" Version="Current" />
+                  <ScalarProperty Name="Region" ParameterName="Region" Version="Current" />
+                  <ScalarProperty Name="City" ParameterName="City" Version="Current" />
+                  <ScalarProperty Name="Address" ParameterName="Address" Version="Current" />
+                  <ScalarProperty Name="HireDate" ParameterName="HireDate" Version="Current" />
+                  <ScalarProperty Name="BirthDate" ParameterName="BirthDate" Version="Current" />
+                  <ScalarProperty Name="TitleOfCourtesy" ParameterName="TitleOfCourtesy" Version="Current" />
+                  <ScalarProperty Name="Title" ParameterName="Title" Version="Current" />
+                  <ScalarProperty Name="FirstName" ParameterName="FirstName" Version="Current" />
+                  <ScalarProperty Name="LastName" ParameterName="LastName" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="EmployeeDB_Model_NS.Store.Employees_DeleteEmployee" >
+                  <ScalarProperty Name="EmployeeId" ParameterName="EmployeeID" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+            </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Employees_GetAllEmployees" FunctionName="EmployeeDB_Model_NS.Store.Employees_GetAllEmployees" />
+          <FunctionImportMapping FunctionImportName="Employees_GetEmployeeByEmployeeId" FunctionName="EmployeeDB_Model_NS.Store.Employees_GetEmployeeByEmployeeId" />
+          <FunctionImportMapping FunctionImportName="Employees_GetAllEmployees_Paged_Count" FunctionName="EmployeeDB_Model_NS.Store.Employees_GetAllEmployees_Paged_Count" />
+          <FunctionImportMapping FunctionImportName="Employees_GetAllEmployees_Paged" FunctionName="EmployeeDB_Model_NS.Store.Employees_GetAllEmployees_Paged" />
+          <FunctionImportMapping FunctionImportName="Employees_DeleteEmployees" FunctionName="EmployeeDB_Model_NS.Store.Employees_DeleteEmployees" />
+          <FunctionImportMapping FunctionImportName="Custom_Employees_GetAllEmployeesWithSupervisors" FunctionName="EmployeeDB_Model_NS.Store.Custom_Employees_GetAllEmployeesWithSupervisors">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmployeeDB_Model_NS.EmployeeWithSupervisorName">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="SupervisorFirstName" ColumnName="SupervisorFirstName" />
+                <ScalarProperty Name="SupervisorLastName" ColumnName="SupervisorLastName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Custom_Employees_GetAllTopAndGeneralEmployees" FunctionName="EmployeeDB_Model_NS.Store.Custom_Employees_GetAllTopAndGeneralEmployees" />
+          <FunctionImportMapping FunctionImportName="Custom_Employees_GetEmployeesByFilterParams" FunctionName="EmployeeDB_Model_NS.Store.Custom_Employees_GetEmployeesByFilterParams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="DatabaseContext" ZoomLevel="81">
+        <EntityTypeShape EntityType="EmployeeDB_Model_NS.Employee" Width="1.5" PointX="0.75" PointY="0.75" Height="4.2218636067708326" IsExpanded="true" />
+        <AssociationConnector Association="EmployeeDB_Model_NS.FK_Employees_Employees" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.2819230769230767" PointY="4.9718636067708326" />
+          <ConnectorPoint PointX="1.2819230769230767" PointY="5.2218636067708326" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="5.2218636067708326" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="4.9718636067708326" /></AssociationConnector></Diagram></Diagrams>
+  </Designer>
+</edmx:Edmx>

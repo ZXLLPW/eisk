@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="414c7a8c-e941-457f-b45c-7d86f93b80c4" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="4be3b0aa-c95b-49a9-954d-904ee381a76e" name="Eisk.UiLayer">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="ed0d526b-0593-4f1a-9661-5da35c1ccb36" direction="Forward">
+          <layerMoniker Id="4e6edc8d-d17c-4217-a79e-8261a35cefd9" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="bc3c0d46-219a-4ee4-831b-30879b384363" direction="Forward">
+          <layerMoniker Id="8f701d1d-824f-4281-a9f3-1648c31a2654" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="16062628-fadd-4c18-a502-e60e7b1e9ac5" direction="Forward">
+          <layerMoniker Id="139a588f-8dd7-4e8b-9ddd-9a193ab44fc2" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="13c85245-bb31-4483-bc4f-6a0236c2e65e" name="Eisk.UiLayer">
+          <ArtifactNode Label="Eisk.UiLayer" Category="CodeSchema_Namespace" Id="(Namespace=Eisk.UiLayer)" />
+          <ExpandedNode Id="(Assembly=Eisk.DataAccess)" Label="Eisk.DataAccess.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Namespace=Eisk.UiLayer)" Label="Eisk.UiLayer" Category="CodeSchema_Namespace">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="8f701d1d-824f-4281-a9f3-1648c31a2654" name="Eisk.CacheLayer">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="b34bd7cc-fb72-46bb-a23b-f63cd913d741" direction="Forward">
+          <layerMoniker Id="4e6edc8d-d17c-4217-a79e-8261a35cefd9" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="00cf3703-6f0a-45dc-8fcc-9fe624bc4c19" name="Eisk.CacheLayer">
+          <ArtifactNode Label="Eisk.CacheLayer" Category="CodeSchema_Namespace" Id="(Namespace=Eisk.CacheLayer)" />
+          <ExpandedNode Id="(Assembly=Eisk.DataAccess)" Label="Eisk.DataAccess.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Namespace=Eisk.CacheLayer)" Label="Eisk.CacheLayer" Category="CodeSchema_Namespace">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="139a588f-8dd7-4e8b-9ddd-9a193ab44fc2" name="Eisk.Helpers">
+      <references>
+        <reference Id="cca6df71-c34d-47b9-9ded-70693e552ef5" name="Eisk.Helpers">
+          <ArtifactNode Label="Eisk.Helpers" Category="CodeSchema_Namespace" Id="(Namespace=Eisk.Helpers)" />
+          <ExpandedNode Id="(Assembly=Eisk.Helpers)" Label="Eisk.Helpers.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Namespace=Eisk.Helpers)" Label="Eisk.Helpers" Category="CodeSchema_Namespace">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="9c22ebbf-2395-4dc3-bbc7-2888044dfc98" name="Eisk.DataAccessHelpers">
+      <references>
+        <reference Id="3bbee8ee-81fd-4db6-a978-dde75005640f" name="Eisk.DataAccessHelpers">
+          <ArtifactNode Label="Eisk.DataAccessHelpers" Category="CodeSchema_Namespace" Id="(Namespace=Eisk.DataAccessHelpers)" />
+          <ExpandedNode Id="(Assembly=Eisk.DataAccess)" Label="Eisk.DataAccess.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Namespace=Eisk.DataAccessHelpers)" Label="Eisk.DataAccessHelpers" Category="CodeSchema_Namespace">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="4e6edc8d-d17c-4217-a79e-8261a35cefd9" name="Eisk.DataAccess">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="56f354c7-f32a-448f-8871-35aa74dbe5f7" direction="Forward">
+          <layerMoniker Id="9c22ebbf-2395-4dc3-bbc7-2888044dfc98" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="81cf9943-0cac-426e-9514-8a048e4d5b50" name="Eisk.DataAccess">
+          <ArtifactNode Label="Eisk.DataAccess" Category="CodeSchema_Namespace" Id="(Namespace=Eisk.DataAccess)" />
+          <ExpandedNode Id="(Assembly=Eisk.DataAccess)" Label="Eisk.DataAccess.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Namespace=Eisk.DataAccess)" Label="Eisk.DataAccess" Category="CodeSchema_Namespace">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="e53a6349-00aa-4f81-bed5-c02047639bf9" name="Eisk.TestHelpers">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="2b6db3d1-5aa1-414c-9774-735d46bd3727" direction="Forward">
+          <layerMoniker Id="4e6edc8d-d17c-4217-a79e-8261a35cefd9" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="ad3c0191-614b-442c-8e1d-46fb1dc4defd" direction="Forward">
+          <layerMoniker Id="9c22ebbf-2395-4dc3-bbc7-2888044dfc98" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="eeb6fdab-5790-42a8-99ac-ac6c97a66b1d" name="Eisk.TestHelpers">
+          <ArtifactNode Label="Eisk.TestHelpers" Category="CodeSchema_Namespace" Id="(Namespace=Eisk.TestHelpers)" />
+          <ExpandedNode Id="(Assembly=Eisk.TestHelpers)" Label="Eisk.TestHelpers.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Assembly=Eisk.Tests.IntegrationTests.DataAccessTests)" Label="Eisk.Tests.IntegrationTests.DataAccessTests.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Namespace=Eisk.TestHelpers)" Label="Eisk.TestHelpers" Category="CodeSchema_Namespace">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="ad62e05c-a027-4b70-b6c4-c82bb47e1c9c" name="Eisk.Tests.IntegrationTests">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="86e56b9d-04d9-471b-9acc-204d381b35e9" direction="Forward">
+          <layerMoniker Id="9c22ebbf-2395-4dc3-bbc7-2888044dfc98" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="db432f71-00e8-439d-a0a9-62c3a2315d9f" direction="Forward">
+          <layerMoniker Id="e53a6349-00aa-4f81-bed5-c02047639bf9" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="577b74d6-8131-4573-943a-b0413802ec30" direction="Forward">
+          <layerMoniker Id="4e6edc8d-d17c-4217-a79e-8261a35cefd9" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="bcfd079e-d2ce-499f-bdfd-8b15633aa835" direction="Forward">
+          <layerMoniker Id="139a588f-8dd7-4e8b-9ddd-9a193ab44fc2" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="a0d04e65-eb93-48f2-b5d7-5e3727ce9e20" name="Eisk.Tests.IntegrationTests">
+          <ArtifactNode Label="Eisk.Tests.IntegrationTests" Category="CodeSchema_Namespace" Id="(Namespace=Eisk.Tests.IntegrationTests)" />
+          <ExpandedNode Id="(Assembly=Eisk.Tests.IntegrationTests.DataAccessTests)" Label="Eisk.Tests.IntegrationTests.DataAccessTests.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Assembly=Eisk.Tests.IntegrationTests.DatabaseUnitTests)" Label="Eisk.Tests.IntegrationTests.DatabaseUnitTests.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Assembly=Eisk.Tests.IntegrationTests.ConfigurationTests)" Label="Eisk.Tests.IntegrationTests.ConfigurationTests.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Namespace=Eisk.Tests.IntegrationTests)" Label="Eisk.Tests.IntegrationTests" Category="CodeSchema_Namespace">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="81907fbe-c479-4a06-abcc-ebc706833d43" name="Eisk.Tests.UnitTests">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="69b84b15-7eca-4675-8de1-657acdaeb16c" direction="Forward">
+          <layerMoniker Id="4e6edc8d-d17c-4217-a79e-8261a35cefd9" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="96cfa459-c3d3-4cf6-a1ca-9a30a682b6b1" direction="Forward">
+          <layerMoniker Id="e53a6349-00aa-4f81-bed5-c02047639bf9" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="37ea7a58-2bc0-443f-9cf8-fa749dc7f0d2" name="Eisk.Tests.UnitTests">
+          <ArtifactNode Label="Eisk.Tests.UnitTests" Category="CodeSchema_Namespace" Id="(Namespace=Eisk.Tests.UnitTests)" />
+          <ExpandedNode Id="(Assembly=Eisk.Tests.UnitTests)" Label="Eisk.Tests.UnitTests.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Namespace=Eisk.Tests.UnitTests)" Label="Eisk.Tests.UnitTests" Category="CodeSchema_Namespace">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+  </layers>
+</layerModel>
